@@ -61,7 +61,7 @@ const days = [
 const appointment = appointments.map((appt) => {
   console.log(appt, "appt")
   return (
-      <Appointment key={appt.id} id={appt.id} time={appt.time} interview={appt.interview} />
+      <Appointment key={appt.id} {...appt} />
     )
 });
 console.log(appointment)
