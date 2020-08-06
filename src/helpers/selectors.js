@@ -16,4 +16,4 @@ function getAppointmentsForDay(state, day) {
   return matchAppointments(state.appointments, appointmentArr);
 }
 
-module.exports = { getAppointmentsForDay };
+module.exports = { matchAppointments, getAppointmentsForDay };
