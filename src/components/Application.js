@@ -16,11 +16,6 @@ export default function Application(props) {
   })
 
   const setDay = day => setState({...state, day});
-  // const setDays = days => setState(prev => ({ ...prev, days }));
-    // const setDays = days => setState(prev => {
-    //   console.log(prev);
-    //   return ({ ...prev, days })
-    // });
 
   useEffect(() => {
     Promise.all([
@@ -33,7 +28,7 @@ export default function Application(props) {
   }, [])
 
   function bookInterview(id, interview) {
-    console.log("State", state)
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -43,12 +38,32 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    console.log("appointments", appointments)
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview:interview})
     .then(res => {
         setState({...state, appointments})
         return res
       })
+    .catch(err => console.log(err))
+  }
+
+  function cancelInterview(id) {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    }
+    
+    return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    .then(res => {
+      setState({...state, appointments})
+      return res
+    })
     .catch(err => console.log(err))
   }
 
@@ -65,6 +80,7 @@ export default function Application(props) {
           interview={interview}
           interviewers={interviewers}
           bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
         />
       )
   });
@@ -84,6 +100,7 @@ export default function Application(props) {
           day={state.day}
           setDay={setDay}
           bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
         />
         </nav>
         <img
@@ -94,7 +111,8 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointment}
-        <Appointment key="last" time="5pm" bookInterview={bookInterview} />
+        <Appointment key="last" time="5pm" bookInterview={bookInterview} cancelInterview={cancelInterview} 
+        />
       </section>
     </main>
   );
