@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
   We import our helper functions from the react-testing-library
   The render function allows us to render Components
 */
-import { render, cleanup, wait, fireEvent, getByPlaceholderText } from "@testing-library/react";
+import { render, cleanup, waitForElement, wait, fireEvent, getByText, getByAltText, getAllByTestId, prettyDOM, getByPlaceholderText } from "@testing-library/react";
 
 /*
   We import the component that we are testing
@@ -31,12 +31,17 @@ describe("Application", () => {
   });
 
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async () => {
-    const { getByText, getByAltText } = render(<Application />);
+    const { container } = render(<Application />);
+    await wait(() => getByText(container, "Archie Cohen"));
+    const appointment = getAllByTestId(container, "appointment")[0];
 
-    await wait(() => getByText("Archie Cohen"));
-      fireEvent.click(ReactDOM.findDOMNode(<Empty />)); //Can't find this node
-      fireEvent.change(getByPlaceholderText("Enter Student Name"), { target: { value: 'Lydia Miller Jones'}})
-      fireEvent.click()
-  })
+    fireEvent.click(getByAltText(appointment, "Add"));
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Lydia Miller-Jones"}
+    })
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+    fireEvent.click(getByText(appointment, "Save"))
+    console.log(prettyDOM(appointment))
+  });
 
 });
