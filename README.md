@@ -1,7 +1,7 @@
 # Interview Scheduler
 ## Project Description
 
-Interview Scheduler is a SPA (Single Page Application) for tracking interviews built with latest tools and techniques for optimized user experience.
+Interview Scheduler is a SPA (Single Page Application) for tracking students interviews built with the latest tools and techniques for optimized user experience.
 The App utilizes  React built-in and custom hooks and allows users to add, edit and delete appointments in real time.
 Data is persisted by the API server using a PostgreSQL database. The client application communicates with an API server over HTTP, using the JSON format.
 For quality assurance, the project follows best practices of TDD (Test Driven Development), where individual Components are tested in isolation as well as End-to-End testing is performed.
@@ -16,9 +16,24 @@ For quality assurance, the project follows best practices of TDD (Test Driven De
 - A user can cancel an existing interview, a pop-up message will ask to confirm the action before permanently deleting an interview
 - Days display currently remaining spots and capture updates after each modification
 
- ```
- Note: For full functionality both must run concurrently: the client and the API server applications (see database* setup below)
- ```
+
+### Daily view
+!['booked-slots-available'](https://raw.githubusercontent.com/yuzhakova/scheduler/master/docs/booked-slots-available.png)
+_By selecting a weekday on the left panel, a user can see booked appointments and available slots for each day._
+
+
+### New appointment booking
+!['book-new-apt'](https://raw.githubusercontent.com/yuzhakova/scheduler/master/docs/book-new-apt.png)
+_A user can add interviews to available slots by typing a student name and adding interviewer from the list (an error message will be shown if a student name field is left blank)._
+
+
+### Interview cancelation
+!['cancel-apt-confirm-delete'](https://raw.githubusercontent.com/yuzhakova/scheduler/master/docs/cancel-apt-confirm-delete.png)
+_A user can cancel an existing appointment by pressing the delete icon and interacting with a warning message by pressing a confirm button._
+
+
+ **Note** : _For full functionality both must run concurrently: the client and the API server applications (see database* setup below)._
+
 
 ## Installation
 ```
