@@ -12,6 +12,7 @@
   },
   "proxy": "http://localhost:8001",
   "scripts": {
+    "cypress": "cypress open -P .",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +43,7 @@
     "@testing-library/react": "^8.0.7",
     "@testing-library/react-hooks": "^3.4.1",
     "babel-loader": "^8.0.5",
+    "cypress": "^4.12.1",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.9.0"
@@ -51,5 +53,17 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
     ]
-  }
+  },
+  "description": "## Setup",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuzhakova/scheduler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuzhakova/scheduler/issues"
+  },
+  "homepage": "https://github.com/yuzhakova/scheduler#readme"
 }
