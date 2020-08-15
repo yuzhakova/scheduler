@@ -1,9 +1,12 @@
+// eslint-disable-next-line
 import React, { useState, useEffect } from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList";
+// eslint-disable-next-line
 import InterviewerList from "./InterviewerList";
 import Appointment from "components/Appointment";
+// eslint-disable-next-line
 import { matchAppointments, getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
 
